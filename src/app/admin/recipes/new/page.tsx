@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getAllTags, createRecipe } from "@/lib/actions";
 import { RecipeForm } from "@/components/admin/RecipeForm";
 

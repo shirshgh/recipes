@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import { getAllTags, updateRecipe } from "@/lib/actions";
 import { RecipeForm } from "@/components/admin/RecipeForm";
