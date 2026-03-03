@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Users, ChefHat, ExternalLink } from "lucide-react";
 import Link from "next/link";
