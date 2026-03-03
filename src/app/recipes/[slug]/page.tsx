@@ -6,6 +6,8 @@ import Link from "next/link";
 import { getRecipeBySlug } from "@/lib/queries";
 import { HealthBadge } from "@/components/HealthBadge";
 import { IngredientScaler } from "@/components/IngredientScaler";
+import { RatingsSection } from "@/components/RatingsSection";
+import { CommentsSection } from "@/components/CommentsSection";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -151,6 +153,26 @@ export default async function RecipePage({ params }: Props) {
           </div>
         </section>
       </div>
+
+      {/* Gold divider */}
+      <div className="flex items-center gap-3">
+        <div className="h-px flex-1 bg-accent-400" />
+        <span className="text-accent-500">✦</span>
+        <div className="h-px flex-1 bg-accent-400" />
+      </div>
+
+      {/* Ratings */}
+      <RatingsSection recipeId={recipe.id} slug={slug} ratings={recipe.ratings} />
+
+      {/* Gold divider */}
+      <div className="flex items-center gap-3">
+        <div className="h-px flex-1 bg-accent-400" />
+        <span className="text-accent-500">✦</span>
+        <div className="h-px flex-1 bg-accent-400" />
+      </div>
+
+      {/* Comments */}
+      <CommentsSection recipeId={recipe.id} slug={slug} comments={recipe.comments} />
     </article>
   );
 }

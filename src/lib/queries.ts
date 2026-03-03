@@ -56,7 +56,12 @@ export async function searchRecipes(opts: {
 export async function getRecipeBySlug(slug: string) {
   const recipe = await db.query.recipes.findFirst({
     where: eq(recipes.slug, slug),
-    with: { ingredients: true, recipeTags: { with: { tag: true } } },
+    with: {
+      ingredients: true,
+      recipeTags: { with: { tag: true } },
+      comments: { orderBy: (c, { desc }) => [desc(c.createdAt)] },
+      ratings: true,
+    },
   });
   return recipe ?? null;
 }

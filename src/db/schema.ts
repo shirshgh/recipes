@@ -66,11 +66,33 @@ export const recipeTags = sqliteTable("recipe_tags", {
     .references(() => tags.id, { onDelete: "cascade" }),
 });
 
+// ─── Comments ────────────────────────────────────────────────────────────────
+
+export const comments = sqliteTable("comments", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  recipeId: integer("recipe_id").notNull().references(() => recipes.id, { onDelete: "cascade" }),
+  authorName: text("author_name").notNull(),
+  text: text("text").notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" }).$defaultFn(() => new Date()),
+});
+
+// ─── Ratings ─────────────────────────────────────────────────────────────────
+
+export const ratings = sqliteTable("ratings", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  recipeId: integer("recipe_id").notNull().references(() => recipes.id, { onDelete: "cascade" }),
+  authorName: text("author_name").notNull(),
+  score: integer("score").notNull(), // 1–5
+  createdAt: integer("created_at", { mode: "timestamp" }).$defaultFn(() => new Date()),
+});
+
 // ─── Relations ───────────────────────────────────────────────────────────────
 
 export const recipesRelations = relations(recipes, ({ many }) => ({
   ingredients: many(ingredients),
   recipeTags: many(recipeTags),
+  comments: many(comments),
+  ratings: many(ratings),
 }));
 
 export const ingredientsRelations = relations(ingredients, ({ one }) => ({
@@ -86,6 +108,14 @@ export const recipeTagsRelations = relations(recipeTags, ({ one }) => ({
   tag: one(tags, { fields: [recipeTags.tagId], references: [tags.id] }),
 }));
 
+export const commentsRelations = relations(comments, ({ one }) => ({
+  recipe: one(recipes, { fields: [comments.recipeId], references: [recipes.id] }),
+}));
+
+export const ratingsRelations = relations(ratings, ({ one }) => ({
+  recipe: one(recipes, { fields: [ratings.recipeId], references: [recipes.id] }),
+}));
+
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export type Recipe = typeof recipes.$inferSelect;
@@ -93,3 +123,5 @@ export type NewRecipe = typeof recipes.$inferInsert;
 export type Ingredient = typeof ingredients.$inferSelect;
 export type NewIngredient = typeof ingredients.$inferInsert;
 export type Tag = typeof tags.$inferSelect;
+export type Comment = typeof comments.$inferSelect;
+export type Rating = typeof ratings.$inferSelect;

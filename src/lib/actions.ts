@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/db/client";
-import { recipes, ingredients, recipeTags, tags } from "@/db/schema";
+import { recipes, ingredients, recipeTags, tags, comments, ratings } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
@@ -115,4 +115,24 @@ export async function deleteRecipe(id: number) {
 
 export async function getAllTags() {
   return db.select().from(tags).orderBy(tags.name);
+}
+
+export async function addComment(formData: FormData) {
+  const recipeId = Number(formData.get("recipeId"));
+  const authorName = String(formData.get("authorName")).trim();
+  const text = String(formData.get("text")).trim();
+  if (!authorName || !text) return;
+  await db.insert(comments).values({ recipeId, authorName, text });
+  const slug = String(formData.get("slug"));
+  revalidatePath(`/recipes/${slug}`);
+}
+
+export async function addRating(formData: FormData) {
+  const recipeId = Number(formData.get("recipeId"));
+  const authorName = String(formData.get("authorName")).trim();
+  const score = Number(formData.get("score"));
+  if (!authorName || score < 1 || score > 5) return;
+  await db.insert(ratings).values({ recipeId, authorName, score });
+  const slug = String(formData.get("slug"));
+  revalidatePath(`/recipes/${slug}`);
 }
