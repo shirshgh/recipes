@@ -67,7 +67,6 @@ export default async function RecipePage({ params }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-serif text-brand-600 hover:text-brand-800 hover:underline transition-colors"
-              onClick={(e) => e.stopPropagation()}
             >
               <ExternalLink size={13} />
               Original recipe on {recipe.sourceLabel ?? recipe.sourceUrl}
