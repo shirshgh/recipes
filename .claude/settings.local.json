@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(export:*)",
+      "Bash(mdfind -name node -onlyin /usr/local)",
+      "Bash(brew:*)",
+      "WebFetch(domain:pinchofyum.com)",
+      "WebFetch(domain:www.kosher.com)",
+      "WebFetch(domain:drive.google.com)",
+      "Bash(unzip:*)",
+      "Bash(do:*)",
+      "Bash(read f:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}

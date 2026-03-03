@@ -1,0 +1,40 @@
+{
+  "name": "family-recipes",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "drizzle-kit push",
+    "db:seed": "tsx --env-file=.env.local src/db/seed.ts",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@libsql/client": "^0.14.0",
+    "drizzle-orm": "^0.36.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.0",
+    "lucide-react": "^0.460.0",
+    "@radix-ui/react-slider": "^1.2.1",
+    "@radix-ui/react-select": "^2.1.2",
+    "@radix-ui/react-dialog": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.6.0",
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.0",
+    "autoprefixer": "^10.4.0",
+    "drizzle-kit": "^0.27.0",
+    "tsx": "^4.19.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.0.0"
+  }
+}
