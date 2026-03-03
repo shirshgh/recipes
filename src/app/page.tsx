@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Suspense } from "react";
 import { searchRecipes } from "@/lib/queries";
 import { RecipeCard } from "@/components/RecipeCard";
