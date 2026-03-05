@@ -59,19 +59,30 @@ export function IngredientScaler({ baseServings, ingredients }: Props) {
 
       {/* Ingredient list */}
       <ul className="space-y-2.5">
-        {ingredients.map((ing) => (
-          <li key={ing.id} className="flex items-start gap-3 text-sm font-serif">
-            <span className="font-bold text-brand-600 w-20 shrink-0 text-right leading-snug">
-              {scaleAmount(ing.amount, scale)} {ing.unit}
-            </span>
-            <span className="text-gray-700 leading-snug">
-              {ing.name}
-              {ing.notes && (
-                <span className="text-gray-400 italic ml-1">({ing.notes})</span>
-              )}
-            </span>
-          </li>
-        ))}
+        {ingredients.map((ing) => {
+          if (Number(ing.amount) === 0) {
+            return (
+              <li key={ing.id} className="pt-2 pb-0.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-brand-500 font-serif">
+                  {ing.name}
+                </span>
+              </li>
+            );
+          }
+          return (
+            <li key={ing.id} className="flex items-start gap-3 text-sm font-serif">
+              <span className="font-bold text-brand-600 w-20 shrink-0 text-right leading-snug">
+                {scaleAmount(ing.amount, scale)} {ing.unit}
+              </span>
+              <span className="text-gray-700 leading-snug">
+                {ing.name}
+                {ing.notes && (
+                  <span className="text-gray-400 italic ml-1">({ing.notes})</span>
+                )}
+              </span>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
