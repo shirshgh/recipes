@@ -1,3 +1,6 @@
+import { config } from "dotenv";
+config({ path: ".env.local", override: true });
+
 import type { Config } from "drizzle-kit";
 
 export default {
