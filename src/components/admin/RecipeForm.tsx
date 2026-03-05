@@ -5,7 +5,7 @@ import { Plus, Trash2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Recipe, Ingredient } from "@/db/schema";
 
-const CATEGORIES = ["breakfast", "lunch", "dinner", "dessert", "snack", "soup", "salad", "side", "drink"];
+const CATEGORIES = ["breakfast", "lunch", "dinner", "dessert", "snack", "soup", "salad", "side", "bread", "drink"];
 const HEALTH_TAGS = ["", "protein", "vegetable", "sugar", "fat", "grain"];
 const HEALTH_SCORES = [
   { value: 1, label: "1 — Indulgent" },

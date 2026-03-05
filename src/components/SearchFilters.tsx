@@ -15,6 +15,7 @@ const CATEGORIES = [
   "soup",
   "salad",
   "side",
+  "bread",
   "drink",
 ];
 
