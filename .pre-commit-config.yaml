@@ -1,0 +1,43 @@
+repos:
+  # ── Standard file hygiene ────────────────────────────────────────────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace        # Remove trailing whitespace
+      - id: end-of-file-fixer          # Ensure files end with a newline
+      - id: check-yaml                 # Validate YAML syntax
+      - id: check-json                 # Validate JSON syntax
+      - id: check-merge-conflict       # Block accidental merge conflict markers
+      - id: check-added-large-files    # Warn on files > 500KB
+        args: ["--maxkb=500"]
+#      - id: no-commit-to-branch        # Protect main branch
+#        args: ["--branch", "main"]
+
+  # ── Secret detection (uses locally installed gitleaks via brew) ──────────
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: Detect secrets (gitleaks)
+        language: system
+        entry: gitleaks protect --staged --redact
+        pass_filenames: false
+
+  # ── TypeScript type check ────────────────────────────────────────────────
+  - repo: local
+    hooks:
+      - id: typescript
+        name: TypeScript type check
+        language: system
+        entry: npx tsc --noEmit
+        pass_filenames: false
+        types: [ts, tsx]
+
+  # ── ESLint (Next.js) ─────────────────────────────────────────────────────
+  - repo: local
+    hooks:
+      - id: eslint
+        name: ESLint
+        language: system
+        entry: npm run lint
+        pass_filenames: false
+        types: [ts, tsx]
