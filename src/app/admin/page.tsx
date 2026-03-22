@@ -58,7 +58,10 @@ export default async function AdminPage() {
                     <HealthBadge score={recipe.healthScore} />
                   </td>
                   <td className="px-3 py-3 text-gray-400 hidden lg:table-cell">
-                    {recipe.sourceLabel ?? <span className="italic text-gray-300">—</span>}
+                    <div>{recipe.sourceLabel ?? <span className="italic text-gray-300">—</span>}</div>
+                    {recipe.referredBy && (
+                      <div className="text-xs text-gray-300 italic">via {recipe.referredBy}</div>
+                    )}
                   </td>
                   <td className="px-5 py-3">
                     <div className="flex items-center justify-end gap-2">

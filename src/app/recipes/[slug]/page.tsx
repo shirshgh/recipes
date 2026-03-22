@@ -74,6 +74,11 @@ export default async function RecipePage({ params }: Props) {
               Original recipe on {recipe.sourceLabel ?? recipe.sourceUrl}
             </a>
           )}
+          {recipe.referredBy && (
+            <p className="text-sm font-serif text-gray-400 italic">
+              Referred by {recipe.referredBy}
+            </p>
+          )}
         </div>
         <HealthBadge score={recipe.healthScore} />
       </div>
