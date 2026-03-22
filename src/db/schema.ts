@@ -27,6 +27,7 @@ export const recipes = sqliteTable("recipes", {
   // Source attribution
   sourceUrl: text("source_url"),       // e.g. "https://www.kosher.com/recipe/..."
   sourceLabel: text("source_label"),   // e.g. "kosher.com" or "Grandma Rivka"
+  referredBy: text("referred_by"),     // e.g. "Esti Fertel"
 
   createdAt: integer("created_at", { mode: "timestamp" })
     .$defaultFn(() => new Date()),

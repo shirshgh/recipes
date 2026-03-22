@@ -5,7 +5,7 @@ import { Plus, Trash2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Recipe, Ingredient } from "@/db/schema";
 
-const CATEGORIES = ["breakfast", "lunch", "dinner", "dessert", "snack", "soup", "salad", "side", "bread", "drink"];
+const CATEGORIES = ["breakfast", "lunch", "dinner", "dessert", "snack", "soup", "salad", "side", "bread", "cookies", "cakes", "drink"];
 const HEALTH_TAGS = ["", "protein", "vegetable", "sugar", "fat", "grain"];
 const HEALTH_SCORES = [
   { value: 1, label: "1 — Indulgent" },
@@ -236,6 +236,10 @@ export function RecipeForm({ action, allTags, recipe }: Props) {
           <div>
             <label className={label}>Source URL</label>
             <input name="sourceUrl" type="url" defaultValue={recipe?.sourceUrl ?? ""} className={input} placeholder="https://..." />
+          </div>
+          <div>
+            <label className={label}>Referred by</label>
+            <input name="referredBy" defaultValue={recipe?.referredBy ?? ""} className={input} placeholder="e.g. Esti Fertel" />
           </div>
           <div className="sm:col-span-2">
             <label className={label}>Image URL</label>

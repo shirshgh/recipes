@@ -28,6 +28,7 @@ function parseRecipeFields(data: FormData) {
     imageUrl: String(data.get("imageUrl") ?? "") || null,
     sourceUrl: String(data.get("sourceUrl") ?? "") || null,
     sourceLabel: String(data.get("sourceLabel") ?? "") || null,
+    referredBy: String(data.get("referredBy") ?? "") || null,
   };
 }
 

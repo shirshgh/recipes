@@ -16,6 +16,8 @@ const CATEGORIES = [
   "salad",
   "side",
   "bread",
+  "cookies",
+  "cakes",
   "drink",
 ];
 
