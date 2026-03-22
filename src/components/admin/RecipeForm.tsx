@@ -242,8 +242,8 @@ export function RecipeForm({ action, allTags, recipe }: Props) {
             <input name="referredBy" defaultValue={recipe?.referredBy ?? ""} className={input} placeholder="e.g. Esti Fertel" />
           </div>
           <div className="sm:col-span-2">
-            <label className={label}>Image URL</label>
-            <input name="imageUrl" type="url" defaultValue={recipe?.imageUrl ?? ""} className={input} placeholder="https://..." />
+            <label className={label}>Image URL or path</label>
+            <input name="imageUrl" type="text" defaultValue={recipe?.imageUrl ?? ""} className={input} placeholder="https://... or /images/filename.jpg" />
           </div>
         </div>
       </section>
