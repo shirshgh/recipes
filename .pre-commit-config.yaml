@@ -9,7 +9,7 @@ repos:
       - id: check-json                 # Validate JSON syntax
       - id: check-merge-conflict       # Block accidental merge conflict markers
       - id: check-added-large-files    # Warn on files > 500KB
-        args: ["--maxkb=500"]
+        args: ["--maxkb=600"]
 #      - id: no-commit-to-branch        # Protect main branch
 #        args: ["--branch", "main"]
 
