@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         <header className="bg-brand-600 text-white">
           <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-3 group">
               <span className="text-2xl">🍳</span>
               <span
                 className="text-2xl font-bold tracking-tight group-hover:opacity-80 transition-opacity"
@@ -24,7 +25,7 @@ export default function RootLayout({
               >
                 Hirschs Favorite Recipes
               </span>
-            </a>
+            </Link>
           </div>
           {/* Gold accent bar */}
           <div className="h-1 bg-accent-500" />
