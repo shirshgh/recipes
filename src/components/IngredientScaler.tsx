@@ -5,6 +5,7 @@ import * as Slider from "@radix-ui/react-slider";
 import { Users } from "lucide-react";
 import { scaleAmount } from "@/lib/utils";
 import type { Ingredient } from "@/db/schema";
+import { SubstitutePanel } from "@/components/SubstitutePanel";
 
 interface Props {
   baseServings: number;
@@ -70,16 +71,21 @@ export function IngredientScaler({ baseServings, ingredients }: Props) {
             );
           }
           return (
-            <li key={ing.id} className="flex items-start gap-3 text-sm font-serif">
-              <span className="font-bold text-brand-600 w-20 shrink-0 text-right leading-snug">
-                {scaleAmount(ing.amount, scale)} {ing.unit}
-              </span>
-              <span className="text-gray-700 leading-snug">
-                {ing.name}
-                {ing.notes && (
-                  <span className="text-gray-400 italic ml-1">({ing.notes})</span>
-                )}
-              </span>
+            <li key={ing.id} className="text-sm font-serif">
+              <div className="flex items-start gap-3">
+                <span className="font-bold text-brand-600 w-20 shrink-0 text-right leading-snug">
+                  {scaleAmount(ing.amount, scale)} {ing.unit}
+                </span>
+                <span className="text-gray-700 leading-snug flex-1">
+                  {ing.name}
+                  {ing.notes && (
+                    <span className="text-gray-400 italic ml-1">({ing.notes})</span>
+                  )}
+                </span>
+              </div>
+              <div className="pl-[92px]">
+                <SubstitutePanel ingredientName={ing.name} />
+              </div>
             </li>
           );
         })}
