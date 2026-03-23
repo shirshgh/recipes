@@ -29,7 +29,6 @@ export function SubstitutePanel({ ingredientName }: Props) {
         className="flex items-center gap-1 text-xs font-serif text-brand-400 hover:text-brand-600 transition-colors"
       >
         <ArrowLeftRight size={12} />
-        <span className="hidden sm:inline">{open ? "hide" : "substitute?"}</span>
       </button>
 
       {open && (
