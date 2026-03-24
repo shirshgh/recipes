@@ -35,7 +35,20 @@ export async function searchRecipes(opts: {
   }
 
   if (category && category !== "all") {
-    conditions.push(eq(recipes.category, category));
+    if (category === "passover") {
+      // Filter by tag instead of category so passover recipes can span all food types
+      const tagRow = await db.query.tags.findFirst({ where: eq(tags.name, "passover") });
+      if (!tagRow) return [];
+      const taggedRows = await db
+        .select({ recipeId: recipeTags.recipeId })
+        .from(recipeTags)
+        .where(eq(recipeTags.tagId, tagRow.id));
+      const taggedIds = taggedRows.map((r) => r.recipeId);
+      if (taggedIds.length === 0) return [];
+      conditions.push(inArray(recipes.id, taggedIds));
+    } else {
+      conditions.push(eq(recipes.category, category));
+    }
   }
 
   if (ingredientRecipeIds) {
