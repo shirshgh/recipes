@@ -15,7 +15,20 @@ Only apply the `dairy` tag when a recipe contains **actual dairy products** such
 - Leave `null` if not specified — do not guess or infer.
 
 ## Category List
-breakfast, lunch, dinner, dessert, snack, soup, salad, side, bread, cookies, cakes, passover, drink
+breakfast, lunch, dinner, dessert, snack, soup, salad, side, bread, cookies, cakes, drink
+
+**Do NOT use `passover` as a category.** Use the proper food category (dessert, side, breakfast, etc.) and add `passover` as a **tag** instead. This allows passover recipes to appear both in the Passover filter AND their food category filter.
+
+## Passover Recipes
+Always set the food category (dessert, side, breakfast, etc.) AND add `passover` to the tags array.
+Example: Passover Pear Crumble → `category: "dessert"`, `tags: ["pareve", "passover"]`
+
+## Adding Recipes via Voice
+The user can provide a WhatsApp audio file path. Run:
+```
+whisper '<path>' --language English --output_dir /tmp/whisper_out --output_format txt
+```
+Then read the transcription from `/tmp/whisper_out/*.txt` and proceed as normal.
 
 ## Image Handling
 - Recipe images are stored in `public/images/` and referenced as `/images/filename.jpg` in `imageUrl`.
