@@ -15,7 +15,7 @@ Only apply the `dairy` tag when a recipe contains **actual dairy products** such
 - Leave `null` if not specified — do not guess or infer.
 
 ## Category List
-breakfast, lunch, dinner, dessert, snack, soup, salad, side, bread, cookies, cakes, drink
+breakfast, lunch, dinner, dessert, snack, soup, salad, side, bread, cookies, cakes, passover, drink
 
 ## Image Handling
 - Recipe images are stored in `public/images/` and referenced as `/images/filename.jpg` in `imageUrl`.

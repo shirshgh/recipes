@@ -18,6 +18,7 @@ const CATEGORIES = [
   "bread",
   "cookies",
   "cakes",
+  "passover",
   "drink",
 ];
 
