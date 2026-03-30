@@ -15,7 +15,7 @@ Only apply the `dairy` tag when a recipe contains **actual dairy products** such
 - Leave `null` if not specified — do not guess or infer.
 
 ## Category List
-breakfast, lunch, dinner, dessert, snack, soup, salad, side, bread, cookies, cakes, drink
+breakfast, lunch, dinner, dessert, snack, soup, salad, side, dips, bread, cookies, cakes, drink
 
 **Do NOT use `passover` as a category.** Use the proper food category (dessert, side, breakfast, etc.) and add `passover` as a **tag** instead. This allows passover recipes to appear both in the Passover filter AND their food category filter.
 
