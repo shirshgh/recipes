@@ -16,7 +16,7 @@ For each recipe source:
 Extract the following fields for each recipe:
 - `title` (required)
 - `description` (one-line summary, optional)
-- `category` — one of: breakfast, lunch, dinner, dessert, snack, soup, salad, side, drink
+- `category` — one of: breakfast, lunch, dinner, dessert, snack, soup, salad, side, dips, bread, cookies, cakes, drink
 - `servings` (number, default 4)
 - `prepMinutes` (optional)
 - `cookMinutes` (optional)
@@ -51,7 +51,20 @@ The script should:
 5. Log each recipe title as it's inserted
 6. Log total count at the end
 
-After running, delete the temp script file, then tell the user the recipes are live and they can view them at /admin.
+After running, delete the temp script file.
+
+## Post-insertion validation (required)
+
+After deleting the temp script, write and run a second short script that queries the DB for every recipe just inserted and prints its full ingredient list. Use this format:
+
+```
+✓ Recipe Title (id: X, category: Y)
+   - 2 cups flour
+   - 1 tsp salt
+   ...
+```
+
+Show this output to the user and ask them to confirm it matches the source. This catches missing or wrong ingredients before the user has to discover errors manually. Delete this script after running it too.
 
 ## Script template to follow
 
