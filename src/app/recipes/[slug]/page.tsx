@@ -42,10 +42,10 @@ export default async function RecipePage({ params }: Props) {
         <img
           src={recipe.imageUrl}
           alt={recipe.title}
-          className="w-full h-64 sm:h-80 object-cover rounded-2xl"
+          className="w-full h-64 sm:h-80 object-cover rounded-2xl print:hidden"
         />
       ) : (
-        <div className="w-full h-52 bg-brand-50 rounded-2xl flex items-center justify-center text-7xl">
+        <div className="w-full h-52 bg-brand-50 rounded-2xl flex items-center justify-center text-7xl print:hidden">
           🍽️
         </div>
       )}
