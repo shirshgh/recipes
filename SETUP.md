@@ -5,7 +5,7 @@ Fully on GitHub: https://github.com/shirshgh/recipes.git
 
 ## Database
 **Turso** (remote cloud SQLite) — data lives in the cloud, nothing to restore.
-- Dashboard: https://turso.tech → database: `hirsch-recipes-shirsh`
+- Dashboard: https://app.turso.tech/shirsh/databases/hirsch-recipes
 - URL: `libsql://hirsch-recipes-shirsh.aws-eu-west-1.turso.io`
 
 ---
