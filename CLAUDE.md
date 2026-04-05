@@ -33,3 +33,5 @@ Then read the transcription from `/tmp/whisper_out/*.txt` and proceed as normal.
 ## Image Handling
 - Recipe images are stored in `public/images/` and referenced as `/images/filename.jpg` in `imageUrl`.
 - When the user says "add photo" and provides a filename in `public/images/`, use `/images/filename` as the `imageUrl`.
+- If there is an image in the link user provided, or in the recipe image it provided use it
+- Always use jpg format (smaller than png); if an image exceeds 600KB, compress or resize it with `sips` before saving
