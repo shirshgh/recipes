@@ -8,6 +8,7 @@ import { HealthBadge } from "@/components/HealthBadge";
 import { IngredientScaler } from "@/components/IngredientScaler";
 import { RatingsSection } from "@/components/RatingsSection";
 import { CommentsSection } from "@/components/CommentsSection";
+import { PrintButton } from "@/components/PrintButton";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,14 +24,17 @@ export default async function RecipePage({ params }: Props) {
 
   return (
     <article className="space-y-8">
-      {/* Back */}
-      <Link
-        href="/"
-        className="inline-flex items-center gap-1.5 text-sm font-serif text-brand-600 hover:text-brand-800 transition-colors"
-      >
-        <ArrowLeft size={14} />
-        All recipes
-      </Link>
+      {/* Back + Print */}
+      <div className="flex items-center justify-between print:hidden">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-sm font-serif text-brand-600 hover:text-brand-800 transition-colors"
+        >
+          <ArrowLeft size={14} />
+          All recipes
+        </Link>
+        <PrintButton />
+      </div>
 
       {/* Hero image */}
       {recipe.imageUrl ? (
@@ -80,7 +84,7 @@ export default async function RecipePage({ params }: Props) {
             </p>
           )}
         </div>
-        <HealthBadge score={recipe.healthScore} />
+        <div className="print:hidden"><HealthBadge score={recipe.healthScore} /></div>
       </div>
 
       {/* Gold divider */}
@@ -160,24 +164,28 @@ export default async function RecipePage({ params }: Props) {
       </div>
 
       {/* Gold divider */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 print:hidden">
         <div className="h-px flex-1 bg-accent-400" />
         <span className="text-accent-500">✦</span>
         <div className="h-px flex-1 bg-accent-400" />
       </div>
 
       {/* Ratings */}
-      <RatingsSection recipeId={recipe.id} slug={slug} ratings={recipe.ratings} />
+      <div className="print:hidden">
+        <RatingsSection recipeId={recipe.id} slug={slug} ratings={recipe.ratings} />
+      </div>
 
       {/* Gold divider */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 print:hidden">
         <div className="h-px flex-1 bg-accent-400" />
         <span className="text-accent-500">✦</span>
         <div className="h-px flex-1 bg-accent-400" />
       </div>
 
       {/* Comments */}
-      <CommentsSection recipeId={recipe.id} slug={slug} comments={recipe.comments} />
+      <div className="print:hidden">
+        <CommentsSection recipeId={recipe.id} slug={slug} comments={recipe.comments} />
+      </div>
     </article>
   );
 }

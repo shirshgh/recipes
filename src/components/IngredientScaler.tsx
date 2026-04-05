@@ -19,7 +19,7 @@ export function IngredientScaler({ baseServings, ingredients }: Props) {
   return (
     <div className="space-y-5">
       {/* Slider */}
-      <div className="bg-brand-50 rounded-2xl p-5 space-y-4 border border-brand-100">
+      <div className="bg-brand-50 rounded-2xl p-5 space-y-4 border border-brand-100 print:hidden">
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-2 text-sm font-serif font-semibold text-gray-700">
             <Users size={15} />
@@ -57,6 +57,12 @@ export function IngredientScaler({ baseServings, ingredients }: Props) {
           </p>
         )}
       </div>
+
+      {/* Print-only servings line */}
+      <p className="hidden print:block text-sm font-serif text-gray-600 font-semibold">
+        Servings: {servings}
+        {scale !== 1 && <span className="font-normal text-gray-400 ml-1">(scaled ×{Math.round(scale * 100) / 100})</span>}
+      </p>
 
       {/* Ingredient list */}
       <ul className="space-y-2.5">
